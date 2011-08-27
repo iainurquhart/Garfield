@@ -15,16 +15,18 @@ The channel module is overkill for a simple task, and the query module doesn't p
 In the following example, our 'file' field id is 102 - so we want to return the contents of field_id_102, from a random entry which is in channel_id 20, filed under category id 105
 
 	{exp:garfield 
-	        category_id=&quot;105&quot; 
-	        field_id=&quot;102&quot;
-	        channel_id=&quot;20&quot;
-	        random=&quot;yes&quot; 
-	        parse_file_paths=&quot;yes&quot;
-	        parse=&quot;inward&quot;
-	    }
-	        {exp:ce_img:pair src=&quot;{garfield}&quot; max_width=&quot;495&quot;}
-	                &lt;img src=&quot;{made}&quot; alt=&quot;{garfield_title}&quot; width=&quot;{width}&quot; height=&quot;{height}&quot; /&gt;
-	        {/exp:ce_img:pair}
+			category_id="105" 
+			field_id="102" 
+			channel_id="20"
+			random="yes" 
+			parse_file_paths="yes"
+			parse="inward"
+		}
+		<div id="feature_photo">
+			{exp:ce_img:pair src="{garfield}" max_width="495"}
+					<img src="{made}" alt="{garfield_title}" width="{width}" height="{height}" />
+			{/exp:ce_img:pair}
+		</div>
 	{/exp:garfield}
 
 Note the parse=&quot;inward&quot; parameter so ce_img can do it's thing
