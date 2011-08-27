@@ -22,6 +22,7 @@
  * @category	Plugin
  * @author		Iain
  * @link		http://iain.co.nz
+ * @license		Don't be a dick, 2011.
  */
 
 $plugin_info = array(
