@@ -33,18 +33,18 @@ Note the parse=&quot;inward&quot; parameter so ce_img can do it's thing
 
 ### Variables:
 
-{garfield} - the contents of the field requested
-{garfield_title} - the title of the entry requested
+	{garfield} - the contents of the field requested
+	{garfield_title} - the title of the entry requested
 
 ### Parameters:
 
-field_id
-category_id
-entry_id
-channel_id
-parse_file_paths (yes/no*)
-random 			(yes/no*)
-show_future 	(yes/no*)
-show_expired 	(yes/no*)
-status 			(open*)
+	field_id
+	category_id
+	entry_id
+	channel_id
+	parse_file_paths (yes/no*)
+	random 			(yes/no*)
+	show_future 	(yes/no*)
+	show_expired 	(yes/no*)
+	status 			(open*)
 
