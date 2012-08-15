@@ -107,31 +107,33 @@ class Garfield {
 		$this->EE->db->limit(1);
 		
 		$query = $this->EE->db->get();
-		
-		$field_data = $query->row('field_data');
-		$entry_title = $query->row('title');
-				
-		if(!$field_data)
+
+		if ($query->num_rows() > 0)
+		{
+			$field_data = $query->row('field_data');
+			$entry_title = $query->row('title');
+
+			if($parse_file_paths == 'yes')
+			{
+				$this->EE->load->library('typography');
+				$this->EE->typography->parse_images = TRUE;
+				$field_data = $this->EE->typography->parse_file_paths($field_data);
+			}
+			
+			$variables = array(
+								'garfield' => $field_data,
+								'garfield_title' => $entry_title
+							  );
+
+			$tmp = $this->EE->functions->prep_conditionals($tagdata, $variables);
+			$this->return_data = $this->EE->functions->var_swap($tmp, $variables);		
+		}
+		else
 		{
 			$this->EE->TMPL->log_item("GARFIELD: No Data to return");
-			return NULL;
-		}
-		
-		if($parse_file_paths == 'yes')
-		{
-			$this->EE->load->library('typography');
-			$this->EE->typography->parse_images = TRUE;
-			$field_data = $this->EE->typography->parse_file_paths($field_data);
-		}
-		
-		$variables = array(
-							'garfield' => $field_data,
-							'garfield_title' => $entry_title
-						  );
 
-		$tmp = $this->EE->functions->prep_conditionals($tagdata, $variables);
-		$this->return_data = $this->EE->functions->var_swap($tmp, $variables);		
-		
+			$this->return_data = $this->EE->TMPL->no_results();
+		}
 	}
 	
 	
